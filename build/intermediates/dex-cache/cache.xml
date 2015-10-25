@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/aorura/workspace/FloneRemote/app/libs/controlP5.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="400e1f7c27a64f446f83f293e4c56e9ae2c49a60">
+        <dex dex="/Users/aorura/workspace/FloneRemote/app/build/intermediates/pre-dexed/debug/controlP5-49677a427d9e1943459a88a2c848f9cd2329ee57.jar" />
+    </item>
+    <item
+        jar="/Users/aorura/workspace/FloneRemote/app/libs/processing-core.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e4708b5eeaa3a26a59bacba5ec31f4c0ab9689ca">
+        <dex dex="/Users/aorura/workspace/FloneRemote/app/build/intermediates/pre-dexed/debug/processing-core-a7f76f8ac85a5f430fa98a2be01da6f6f58decf2.jar" />
+    </item>
+
+</items>
