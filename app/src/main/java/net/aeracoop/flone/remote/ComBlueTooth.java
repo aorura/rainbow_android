@@ -23,11 +23,19 @@ public class ComBlueTooth extends Activity {
     TextView textView;
     long lastPress=0;
     static String bluetoothId = "HB02";
+    byte[] LED_COLOR = new byte[5];
+    int idx = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_com_blue_tooth);
+
+        LED_COLOR[0] = 0x01;    // blue
+        LED_COLOR[1] = 0x02;    // Green
+        LED_COLOR[2] = 0x04;    // RED
+        LED_COLOR[3] = 0x08;    // YELLOW
+        LED_COLOR[4] = 0x10;    // WHITE
 
         blueName = (EditText) findViewById(R.id.blue_name);
         textView = (TextView) findViewById(R.id.text);
@@ -102,12 +110,16 @@ public class ComBlueTooth extends Activity {
         }
     }
 
+
     public void onSend(View view) {
         if (btConnected()) {
             Toast.makeText(this, "isConnect == true", Toast.LENGTH_SHORT).show();
             byte[] command = new byte[2];
             command[0] = 0x16;
-            command[1] = 0x01;
+            command[1] = LED_COLOR[idx++];
+            if (idx % 5 == 0) {
+                idx = 0;
+            }
             tBlue.write(command);
         } else {
             Toast.makeText(this, "isConnect == false", Toast.LENGTH_SHORT).show();
