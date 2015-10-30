@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -114,13 +115,32 @@ public class ComBlueTooth extends Activity {
     public void onSend(View view) {
         if (btConnected()) {
             Toast.makeText(this, "isConnect == true", Toast.LENGTH_SHORT).show();
-            byte[] command = new byte[2];
-            command[0] = 0x16;
-            command[1] = LED_COLOR[idx++];
-            if (idx % 5 == 0) {
-                idx = 0;
-            }
+            byte[] command = new byte[5];
+            command[0] = 0x08;  // LED Color Command
+            command[1] = 0x01; //LED_COLOR[idx++];
+            command[2] = 0x04; // 0x02 = celcius, 0x04 = feran
+            command[3] = 0x01; // second_digit
+            command[4] = 0x09; // first_digit
+
+//            if (idx % 5 == 0) {
+//                idx = 0;
+//            }
             tBlue.write(command);
+
+//            try {
+//                Thread.sleep(500);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//
+//            Log.d("park", "idx: " + idx);
+//            command[0] = 0x17; // Temperature Command
+//            command[1] = (byte) idx++;
+//            tBlue.write(command);
+//
+//            if (idx > 11) {
+//                idx = 0;
+//            }
         } else {
             Toast.makeText(this, "isConnect == false", Toast.LENGTH_SHORT).show();
         }
